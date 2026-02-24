@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import {env} from './env';
 
 /**
  * Read environment variables from file.
@@ -25,7 +26,11 @@ export default defineConfig({
   reporter: [['html'], ['list',{ printSteps: true }]],
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://qauto.forstudy.space/',
+    httpCredentials: {
+      username: env.BASIC_AUTH_USER,
+      password: env.BASIC_AUTH_PASS
+    },
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     viewport: { width: 1920, height: 1440 },

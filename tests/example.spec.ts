@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Playwright homepage', () => {
+test.describe.skip('Playwright homepage', () => {
   test('has title', async ({ page }) => {
     await page.goto('https://playwright.dev/');
 

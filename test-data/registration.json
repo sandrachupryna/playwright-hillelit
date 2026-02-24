@@ -1,0 +1,8 @@
+{
+    "invalidNames": ["John3", "An@", "M!ke", "S#rah", "Davi$d", "Eve%", "Sarah-Jane"],
+    "invalidLastNames": ["Smith1", "Brown!", "Davis#", "Miller$", "Wilson%", "Bl@ck", "Smith-Jones", "O'Conner"],
+    "namesWithSpaces": ["John ", " Ana", "       Mike", "Sarah     ", "       Eve       ", "Mary Margaret"],
+    "lastNamesWithSpaces": ["Smith ", " Conner", "   Brown", "Davis     ", "      Millers      ", "Montero Perez"],
+    "invalidEmails": ["plainaddress", "@missingusername.com", "username@.com", "username@com", "username@domain..com", "username@@domain.com"],
+    "invalidPasswords": ["alllowercase", "ALLUPPERCASE", "12345678", "nouppercase1", "NOLOWERCASE1", "NoNumbers"]
+}
