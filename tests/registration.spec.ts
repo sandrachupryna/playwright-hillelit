@@ -2,11 +2,6 @@ import { test, expect } from '@playwright/test';
 import registrationData from '../test-data/registration.json' with { type: 'json' };
 import { Page } from '@playwright/test';
 
-type RegistrationOverrides = {
-  overrides?: Partial<Record<string, string>>;
-  excludedField?: string | null;
-};
-
 /**
  * Helpers 
  **/
