@@ -32,18 +32,14 @@ export class RegistrationModal extends BaseModal{
   private get registerButton(): Locator {
     return this.root.getByRole('button', { name: 'Register' });
   }
-
-  private getFormGroup(inputId: string): Locator {
-    return this.root.locator('.form-group').filter({ has: this.page.locator(inputId) });
-  }
-    
-  private async expectLabelText(inputId: string, expectedText: string) {
-    const label = this.getFormGroup(inputId).locator('label');
+  
+  private async expectLabelText(fieldId: string, expectedText: string) {
+    const label = this.root.locator(`.form-group:has(${fieldId}) label`);
     await expect(label).toHaveText(expectedText);
   }
 
   private getErrorMessage(fieldId: string): Locator {
-    return this.getFormGroup(fieldId).locator('.invalid-feedback');
+    return this.root.locator(`.form-group:has(${fieldId}) .invalid-feedback`);
   }
 
   async expectHeadingVisible() {
@@ -132,7 +128,11 @@ export class RegistrationModal extends BaseModal{
   }
 
   async expectNoErrorMessage(field: RegistrationField){
-    const errorLabel = this.getErrorMessage(this.fieldIdMapping[field]);
-    await expect(errorLabel).toHaveCount(0);
+    const fieldId = this.fieldIdMapping[field];
+    const input = this.getInputField(fieldId);
+    const errorLabel = this.getErrorMessage(fieldId);
+
+    await expect(input).not.toHaveClass(/is-invalid/);
+    await expect(errorLabel).toBeHidden();
   }
 }
