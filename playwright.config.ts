@@ -26,7 +26,7 @@ export default defineConfig({
   reporter: [['html'], ['list',{ printSteps: true }]],
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://qauto.forstudy.space/',
+    baseURL: env.BASE_URL,
     httpCredentials: {
       username: env.BASIC_AUTH_USER,
       password: env.BASIC_AUTH_PASS

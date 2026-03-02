@@ -13,4 +13,5 @@ function getEnv(name: string): string {
 export const env = {
   BASIC_AUTH_USER: getEnv('BASIC_AUTH_USER'),
   BASIC_AUTH_PASS: getEnv('BASIC_AUTH_PASS'),
+  BASE_URL: getEnv('BASE_URL'),
 };
