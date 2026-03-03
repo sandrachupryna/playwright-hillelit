@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import {env} from './env';
+import { env } from './env';
 
 /**
  * Read environment variables from file.
@@ -12,6 +12,13 @@ import {env} from './env';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+
+const browsers = [
+  { name: 'chromium', device: devices['Desktop Chrome'] },
+  { name: 'firefox', device: devices['Desktop Firefox'] },
+  { name: 'webkit', device: devices['Desktop Safari'] },
+];
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -37,18 +44,24 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'setup',
+      testMatch: /.*\.setup\.ts/,
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    }
+    ...browsers.map(browser => ({
+      name: `${browser.name}-public`,
+      testMatch: /tests\/public/,
+      use: {
+        ...browser.device,
+      },
+    })),
+    ...browsers.map(browser => ({
+      name: browser.name,
+      testIgnore: /tests\/public/,
+      use: {
+        ...browser.device,
+        storageState: 'auth/user.json',
+      },
+      dependencies: ['setup'],
+    })),
   ]
 });

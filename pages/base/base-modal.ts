@@ -7,7 +7,7 @@ export abstract class BaseModal {
     this.root = page.locator(selector);
   }
 
-  private get closeButton() {
+  protected get closeButton() {
     return this.root.getByRole('button' , { name: 'Close'} )
   }
 
