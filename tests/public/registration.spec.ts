@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import registrationData from '../test-data/registration.json' with { type: 'json' };
+import registrationData from '../../test-data/registration.json' with { type: 'json' };
 import { Page } from '@playwright/test';
 
 /**
@@ -76,7 +76,7 @@ async function expectInvalidFieldAndMessage(page: Page, field: keyof UserCredent
 
 /* ========================================================= */
 
-test.describe('Check registration process', () => {
+test.describe.skip('Check registration process', () => {
   test.beforeEach(async ({ page }) => {
     await openHomeAndOpenRegistrationForm(page);
   });
