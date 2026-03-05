@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import registrationData from '../../test-data/registration.json' with { type: 'json' };
-import { HomePage, RegistrationModal, UserRegistrationData, RegistrationField } from '../../pages';
+import registrationData from '../../../test-data/registration.json' with { type: 'json' };
+import { HomePage, RegistrationModal, UserRegistrationData, RegistrationField } from '../../../pages';
 
 
 test.describe('Check registration process', () => {

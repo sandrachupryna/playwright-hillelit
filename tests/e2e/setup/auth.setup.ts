@@ -1,6 +1,6 @@
 import { test as setup } from '@playwright/test';
-import { HomePage } from '../../pages/home-page';
-import { env } from '../../env';
+import { HomePage } from '../../../pages/home-page';
+import { env } from '../../../env';
 
 setup('Authenticate test user', async ({ page }) => {
   const homePage = new HomePage(page);

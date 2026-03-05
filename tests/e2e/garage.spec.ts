@@ -1,4 +1,4 @@
-import { test } from '../fixtures/user-garage.fixture';
+import { test } from '../../fixtures/user-garage.fixture';
 
 test.describe('Garage tab', () => {
 
