@@ -48,20 +48,30 @@ export default defineConfig({
       testMatch: /.*\.setup\.ts/,
     },
     ...browsers.map(browser => ({
-      name: `${browser.name}-public`,
-      testMatch: /tests\/public/,
+      name: `E2E-${browser.name} public`,
+      testDir: './tests/e2e',
+      testMatch: /tests\/e2e\/public/,
       use: {
         ...browser.device,
       },
     })),
     ...browsers.map(browser => ({
-      name: browser.name,
-      testIgnore: /tests\/public/,
+      name: `E2E-${browser.name}`,
+      testDir: './tests/e2e',
+      testIgnore: /tests\/e2e\/public/,
       use: {
         ...browser.device,
         storageState: 'auth/user.json',
       },
       dependencies: ['setup'],
     })),
+    {
+      name: 'API tests',
+      testDir: './tests/api',
+      use: {
+        storageState: 'auth/user.json',
+      },
+      dependencies: ['setup']
+    }
   ]
 });

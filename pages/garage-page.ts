@@ -1,10 +1,14 @@
 import { expect, Page } from '@playwright/test';
 import { BasePage } from './base/base-page';
 import { AddCarModal } from './modals/add-car-modal';
+import { Sidebar } from './componets/sidebar';
 
 export class GaragePage extends BasePage {
+  readonly sidebar: Sidebar;
+
   constructor(page: Page) {
     super(page, "/panel/garage");
+    this.sidebar = new Sidebar(page);
   }
 
   private get tabTitle() {
